@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Registration</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro&family=Literata">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+  
+  <script type="javascript">
+  
+  
+  </script>
+</head>
+
+<body style="background-color:#9fb6cd;color:black;">
+  <form name="myForm"  onsubmit="return validateForm()" action="R1.php"   method="post">
+    <div class="box">
+  <h1 style="text-align:center;">Registration</h1>
+  First name<br><br>
+  
+   <input type="text" name="fname" color:#008080 placeholder="First Name"><br><br>
+   Last name<br><br>
+
+  <input type="text" name="lname" placeholder="Last Name"><br><br>
+  Gender<br><br>
+
+  <input type="radio" name = "ans" value="male"> male <br><br>
+ 
+  <input type="radio" name = "ans" value="female"> female <br><br>
+  Email-id<br><br>
+ 
+  <input type="email" name="useremail" placeholder="Email Address"><br><br>
+  Password<br><br>
+
+  <input type="password" name="txtPassword" placeholder="Password" min="8" max="12"><br><br>
+  CONFIRM PASSWORD<br><br>
+
+  <input type="password" name="txtConfirmPassword" placeholder="Confirm Password" min="8" max="12"><br><br>
+  
+  <input type="checkbox">I here by accept all the guidlines provided by the authorised website<br><br>
+
+ <button style="background-color:darkblue; color:white; border-radius:5px; 
+ width:49%;"><b class="fa fa-facebook-official" style="font-size:25px; color:white; 
+ padding:10px 5px;"></b>Facebook</button>
+
+<button style="background-color:red; color:white; border-radius:5px; 
+width:49%;"><b class="fa fa-google-plus-official" style="font-size:25px; color:white; 
+padding:10px 5px;"></b>Google +</button> <br>
+<br><br>
+<input type="submit" button="myFunction" onsubmit="return validateForm()" value="Submit" id="submit">
+
+<input type="reset" value="Reset">
+    </div>
+     </form>
+     <script type="text/javascript" href="js/script.js">
+  function validateForm() {
+  var letters = /^[A-Za-z]+$/;
+  var x = document.forms["myForm"]["fname"].value;
+  var y = document.forms["myForm"]["lname"].value;
+  var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	var emailname = document.forms["myForm"]["useremail"].value;
+	var password = document.forms["myForm"]["txtPassword"].value;
+	var confirmPassword = document.forms["myForm"]["txtConfirmPassword"].value;
+	
+	debugger;
+  if (x != "" && y != "" && emailname != "" && password != "" && confirmPassword != "") {
+  debugger;
+  var isValidX = letters.test(document.forms["myForm"]["fname"].value);
+  var isValidY = letters.test(document.forms["myForm"]["lname"].value);
+        if (!isValidX) {
+            alert("Only Alphabets allowed in First Name.");
+			x.focus();
+			return false;
+        }else if (!isValidY) {
+            alert("Only Alphabets allowed in Last Name.");
+			y.focus();
+			return false;
+		}
+		else if(password != confirmPassword) {
+            alert("Passwords do not match.");
+			confirmPassword.focus();
+            return false;
+        }
+		else if(!emailname.match(mailformat)){
+				alert("You have entered an invalid email address!");
+				Useremail.focus();
+				return false;
+		}
+		
+		else{
+
+			alert("Your Registration Successfully Completed.!");
+		}
+
+	}else
+	{
+		if (x == "") {
+				alert("First Name must be Required.");
+				return false;
+			}		
+		else if (y == "") {
+				alert("Last Name must be Required.");
+				return false;
+			}	
+		else if (emailname == "") {
+				alert("Email Id must be Required.");
+				return false;
+			}
+		else if (password == "") {
+				alert("Password must be Required.");
+				return false;
+			}
+		else if (confirmPassword == "") {
+				alert("Confirm Password must be Required.");
+				return false;
+			}
+		
+	}
+  
+  
+	
+	
+}
+ </script>
+ </body>
+</html>
